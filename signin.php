@@ -56,7 +56,7 @@
         <li></li><li></li><li></li>
         <li></li><li></li><li></li>
         <li class="nav-item active">
-            <a class="nav-link navbar-brand" href="AIO.HTML"><img width=120 height=120 src="UBIT.png" alt=""> <span class="sr-only"></span></a>
+            <a class="nav-link navbar-brand" href="AIO.HTML"><img width=120 height=120 src="/images/UBIT.png" alt=""> <span class="sr-only"></span></a>
           </li>
         <li class="nav-item">
             <a class="nav-link navbar-brand" href="#">Home <span class="sr-only"></span></a>
@@ -82,9 +82,9 @@
 
   <div class="social-icons">
     
-<a href="facebook.com"> <img src="facebook.svg"  alt=""> </a>
-<a href="facebook.com"> <img src="instagram.svg"  alt=""> </a>
-  <a href="facebook.com"> <img src="linkedin.svg"  alt=""> </a>
+<a href="facebook.com"> <img src="/images/facebook.svg"  alt=""> </a>
+<a href="facebook.com"> <img src="/images/instagram.svg"  alt=""> </a>
+  <a href="facebook.com"> <img src="/images/linkedin.svg"  alt=""> </a>
 
   </div>
 
