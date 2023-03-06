@@ -5,119 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage</title>
   <!-- Bootstrap CSS -->
-  <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
+    <?php
+// Establish a connection to the database
+$servername = "localhost"; // Change this to your server name
+$username = "root"; // Change this to your database username
+$password = ""; // Change this to your database password
+$dbname = "agencydb"; // Change this to your database name
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Get the username from the form
+  $username = $_POST["username"];
+
+  // Prepare a SQL statement to check if the username already exists in the user table
+  $sql = "SELECT * FROM user WHERE name='$username'";
+  $result = mysqli_query($conn, $sql);
+
+  // If there is a result, the username is already taken
+  if (mysqli_num_rows($result) > 0) {
+    echo "Sorry, that username is already taken.";
+  } else {
+    // Insert the new user into the user table
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $sql = "INSERT INTO user (name, email, password) VALUES ('$username', '$email', '$password')";
+    if (mysqli_query($conn, $sql)) {
+      header('location: AIO.html');
+    } 
+    else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+  }
+}
+
+mysqli_close($conn);
+?>
+
   </head>
-  <body>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
-</html>
-  <style>
-    .navbar {
-      border: none;
-      background-color: white;
-    }
-
-
-    nav ul li { 
-  
-  margin-right: 25px; /* if the nav is on the left */ 
-} 
-
-
-.social-icons {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 9999;
-}
-
-.social-icons  {
-  width: 38px;
-  display: block;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 50%;
-}
-
-
-
-
-
-
-
-    footer {
-      background-color: #000;
-      color: #fff;
-      padding: 70px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    input:hover {
-  background-color: gray;
-  border: #000000;
-}
-
-input {
-  background-color: #000;
-  color: rgb(255, 255, 255);
-  font-size: 24px;
-}
-
-.centertext {
-  
-  display: flex;
-			justify-content: center;
-			align-items: center;
-			padding-top: 150px;
-      padding-bottom: 20px;
-}
-
-.titletext {
-  font-size: 20px;
-}
-
-.btn:hover {
-    background-color: #635c5c;
-    color: white;
-    border: #000000;
-
-}
-
-.btn {
-    
-    background-color: black;
-    color: white;
-    border-color: black;
-    width: 100px;
-    height: 40px;
-    
-}
-
-
-
-
-  </style>
-</head>
 <body>
   <!-- Navbar -->
-
- 
-
-  
-
-  
   <nav class="navbar navbar-expand-lg text-center">
    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,10 +73,10 @@ input {
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="signinubit.html">Sign in</a>
+          <a class="nav-link" href="signin.php">Sign in</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="signupubit.html">Sign up</a>
+          <a class="nav-link" href="signup.php">Sign up</a>
         </li>
       </ul>
     </div>
@@ -161,15 +92,11 @@ input {
   <a href="facebook.com"> <img src="linkedin.svg"  alt=""> </a>
 
   </div>
-  
-
-
-
   <div class="container">
     <h1 class="text-center my-5">Sign up</h1>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form action="/signup" method="POST">
+        <form action="signup.php" method="POST">
           <div class="form-group">
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" class="form-control" required>
@@ -190,13 +117,15 @@ input {
 <br>
           <button type="submit" class="btn btn-primary">Sign up</button>
         </form>
-        <p class="text-center mt-3">Already have an account? <a href="/signin">Sign in</a></p>
+        <p class="text-center mt-3">Already have an account? <a href="signin.php">Sign in</a></p>
       </div>
     </div>
   </div>
       
-   
   <!-- Footer -->
   <footer class="text-center">
     <p>&copy; 2023 UBIT. All Rights Reserved.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
