@@ -109,7 +109,17 @@
         <form action="/signup" method="POST">
   
           <b>Are you currently running a business or planning to start one?</b>
-          <input class="form-control" required type="text"></input><br>          
+
+
+<br>
+    <input type="radio" id="running" name="business" value="running">
+    <label for="running">Yes, I'm currently running a business.</label>
+    <br>
+  
+    <input type="radio" id="planning" name="business" value="planning">
+    <label for="planning">No, but I'm planning to start one.</label><br>
+    <br>
+  
           <b>What's Your Business Industry?</b>
           <input class="form-control" required type="text"></input><br>
           <b>What's Your Business Name?</b>
