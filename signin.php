@@ -13,7 +13,7 @@
         $servername = "localhost";
         $username = "root";
         $dbpassword = "";
-        $dbname = "agencydb";
+        $dbname = "ubitdb";
 
         $conn = mysqli_connect($servername, $username, $dbpassword, $dbname);
 
