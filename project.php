@@ -20,6 +20,8 @@ include("navbar.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -88,26 +90,40 @@ include("navbar.php");
     </script>
 
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form action="project.php" method="POST">
+      <div class="col-md-4">
+        <form action="signup.php" method="POST">
+
+          <b>Enter Your Business E-Mail</b>
+          <input class="form-control" required type="text"></input><br>
 
           <b>Are you currently running a business or planning to start one?</b>
           <br>
+          <input type="radio" id="planning" name="business" value="planning">
           <input type="radio" id="running" name="operational" value="running">
           <label for="running">Yes, I'm currently running a business.</label>
           <br>
 
           <input type="radio" id="planning" name="operational" value="planning">
           <label for="planning">No, but I'm planning to start one.</label><br>
-          <br>
+
+          <input type="radio" id="running" name="business" value="running">
+          <label for="running">Yes, I'm currently running a business.</label>
+          <br><br>
 
           <b>What's Your Business Industry?</b>
           <input class="form-control" required type="text" name="industry"></input><br>
           <b>What's Your Business Name?</b>
           <input class="form-control" type="text" name="bname"></input><br>
           <b>What's Your Organizational Size?</b>
-          <p>(optional)</p>
-          <input class="form-control" type="text" name="bsize"></input><br>
+          <select class="form-control" required>
+            <option value="">Select an option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select><br>
+
           <b>List Some Of The Areas Your Business Needs Help With</b>
           <input class="form-control" required type="text" name="prob "></input><br>
 
