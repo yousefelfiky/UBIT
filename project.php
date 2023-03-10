@@ -19,7 +19,7 @@ include("navbar.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,18 +37,38 @@ include("navbar.php");
     $industry = $_POST["industry"];
     $bname = $_POST["bname"];
     $bsize = $_POST["bsize"];
+    $email = $_POST["email"];
+    $prob = $_POST["prob"];
 
-    if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_assoc($result);
-      $userid = $row["id"];
+    $userid = $_SESSION["id"];
+
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "INSERT INTO business (operational, industry, bname, bsize) 
-          VALUES ('$operational','$industry','$bname','$bsize',)";
+    $sql = "INSERT INTO business (operational, industry, bname, bsize, userid) 
+            VALUES ('$operational','$industry','$bname','$bsize','$userid')";
 
     $result = mysqli_query($conn, $sql);
 
-    mysqli_close($conn);
+    if ($result) {
+      // Send email notification
+      $to = "alikhaledm399@gmail.com";
+      $subject = "New Business Submission";
+      $message = "A new business has been submitted.\n\n"
+        . "is it Operational?: $operational\n"
+        . "Industry: $industry\n"
+        . "Business Name: $bname\n"
+        . "Organizational Size: $bsize\n"
+        . "Problem Areas: $userid\n";
+      $headers = "From: Your Website <noreply@example.com>\r\n";
+      $headers .= "Reply-To: noreply@example.com\r\n";
+      $headers .= "X-Mailer: PHP/" . phpversion();
+
+      mail($to, $subject, $message, $headers);
+
+      mysqli_close($conn);
+    }
   }
   ?>
 
@@ -82,14 +102,14 @@ include("navbar.php");
           <br>
 
           <b>What's Your Business Industry?</b>
-          <input class="form-control" required type="text"></input><br>
+          <input class="form-control" required type="text" name="industry"></input><br>
           <b>What's Your Business Name?</b>
-          <input class="form-control" type="text"></input><br>
+          <input class="form-control" type="text" name="bname"></input><br>
           <b>What's Your Organizational Size?</b>
           <p>(optional)</p>
-          <input class="form-control" required type="text"></input><br>
+          <input class="form-control" type="text" name="bsize"></input><br>
           <b>List Some Of The Areas Your Business Needs Help With</b>
-          <input class="form-control" required type="text"></input><br>
+          <input class="form-control" required type="text" name="prob "></input><br>
 
           <br>
           <button type="submit" class="btncustom btn-primary">Done</button><br><br><br><br><br>

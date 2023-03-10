@@ -97,18 +97,12 @@ include("navbar.php");
     });
   </script>
 
-
-
-
-
   <div class="container containergap">
     <div class="row">
       <div class="col-md-12">
       </div>
     </div>
   </div>
-
-
 
   <div class="container mt-5 text-center centertext">
     <div class="row">
@@ -118,18 +112,7 @@ include("navbar.php");
     </div>
   </div>
 
-
-
-
   <!---Mobile Devices Content---->
-
-
-
-
-
-
-
-
 
   <div id="my-scroll-container3" class="container mt-5 hideforpc">
     <div class="row">

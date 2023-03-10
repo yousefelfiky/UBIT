@@ -3,10 +3,9 @@
   "configurations": [
     {
       "type": "chrome",
-      "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome against localhost",
-      "url": "http://localhost:/UBIT/index.php",
+      "url": "http://localhost:8080/UBIT/UBIT/index.php",
       "webRoot": "${workspaceFolder}"
     }
   ]
