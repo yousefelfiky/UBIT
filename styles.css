@@ -48,6 +48,9 @@ body.fixed-footer #footer {
   width: 100%;
 }
 
+.width-height {
+  height: 200px;
+}
 
 
 #message {
@@ -116,7 +119,7 @@ border: #000000;
 
 .btncustom {
 
-background-color: black;
+background-color: rgb(0, 0, 0);
 color: white;
 border-color: black;
 width: 100px;
@@ -125,10 +128,23 @@ height: 40px;
 }
 
 
+.bgcolorabout{
+  background-color: rgba(255, 255, 255, 0.63);
+}
+
+
+.coverimage { 
+  max-width: 100%;
+  background-image: url('images/aboutimage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 
 
 .btnproject:hover {
-  background-color: black;
+  background-color: gray;
   color: white;
   border: #000000;
   
