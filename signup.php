@@ -9,6 +9,7 @@ include("footer.php");
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage</title>
@@ -72,6 +73,7 @@ include("footer.php");
           <br>
           <button type="submit" class="btncustom btn-primary">Sign up</button>
         </form>
+        <p class="text-center mt-3">Already have an account? <a href="/signin">Sign in</a></p>
         <p class="text-center mt-3">Already have an account? <a href="/signin">Sign in</a></p>
       </div>
     </div>
