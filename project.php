@@ -57,6 +57,16 @@ include("navbar.php");
   }
   ?>
 
+  <div id="message" class="container text-center" style="display:none;">
+    <b>Thank you for your interest in UBIT! An email will be sent shortly.
+      <br><br>
+      <a href="project.php"><button type="submit" class="btnproject btn-sm btn-primary">Start another project</button></a><br><br>
+      <a href="index.php"><button type="submit" class="btnproject btn-sm btn-primary">Return to Homepage</button></a></b>
+
+    </b>
+
+
+  </div>
 
 
   <style>
@@ -73,6 +83,9 @@ include("navbar.php");
         $('#my-container').slideDown(1500);
       });
     </script>
+
+
+
 
     <div class="row justify-content-center">
       <div class="col-md-5">
@@ -92,9 +105,9 @@ include("navbar.php");
           <br>
 
           <b>What's Your Business Industry?</b>
-          <input class="form-control" required type="text" name="industry"></input><br>
-          <b>What's Your Business Name?</b>
-          <input class="form-control" type="text" name="bname"></input><br>
+          <input class="form-control" required type="text"></input><br>
+          <b>What's Your Business/Company Name?</b>
+          <input class="form-control" type="text"></input><br>
           <b>What's Your Organizational Size?</b>
           <select class="form-control" name="bsize" required>
             <option value="">Select an option</option>
@@ -105,12 +118,58 @@ include("navbar.php");
             <option value="5">50+</option>
           </select><br>
 
+          <b>Please provide the URL of your website, or mention if you don't have one.</b>
+          <input class="form-control" required type="text"></input><br>
+
+
           <b>List Some Of The Areas Your Business Needs Help With</b>
-          <input class="form-control" required type="text" name="prob"></input><br>
+          <input class="form-control" required type="text"></input><br>
 
           <br>
+
+
           <button type="submit" class="btncustom btn-primary">Done</button><br><br><br><br><br>
         </form>
+
+
+
+
+
+        <script>
+          $(document).ready(function() {
+            $('#my-form').submit(function(event) {
+              // Prevent the default form submission behavior
+              event.preventDefault();
+
+              // Remove the form container from the DOM
+              $('#my-form-container').remove();
+
+              // Show the thank you message
+              $('#message').show();
+
+              // Add a class to the body element to fix the footer
+              $('body').addClass('fixed-footer');
+
+              // Scroll to the top of the page
+              $('html, body').animate({
+                scrollTop: 0
+              }, 'slow');
+            });
+
+            // Add click event handler to "Done" button
+            $('#done-btn').click(function() {
+              $('html, body').animate({
+                scrollTop: 0
+              }, 'slow');
+            });
+          });
+        </script>
+
+
+
+
+
+
 
       </div>
     </div>

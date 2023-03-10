@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
-      <img src="images/UBIT.png" width="100" height="100" alt="logo" class="d-inline-block align-top">
+      <img src="images/UBITLOGO.png" width="200" height="180" alt="logo" class="d-inline-block align-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,8 +14,6 @@
         <li></li>
         <li></li>
         <li></li>
-        <li>
-        <li>
         <li></li>
         </li>
         </li>
@@ -33,14 +31,14 @@
       </ul>
       <ul class="navbar-nav ms-auto text-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="aboutus.php">About Us</a>
+          <a class="nav-link active" aria-current="page" href="about.php">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="contact.php">Contact</a>
         </li>';
         if (isset($_SESSION['id'])) {
           echo '<li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="logout.php">logout</a>
+          <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>';
         } else {
           echo '<li class="nav-item">
