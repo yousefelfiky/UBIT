@@ -1,24 +1,16 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "PHP Debug",
-            "type": "php",
+            "type": "chrome",
             "request": "launch",
-            "program": "C:\\Users\\Fiky\\Desktop\\Web\\hello-1\\UBIT\\signup.php",
-            "cwd": "C:\\Users\\Fiky\\Desktop\\Web\\hello-1\\UBIT",
-            "runtimeArgs": [
-                "-dxdebug.start_with_request=yes"
-            ],
-            "env": {
-                "XDEBUG_MODE": "debug",
-                "XDEBUG_CONFIG": "client_port=9000"
-            },
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "^\\s*Ready on http://localhost:(\\d+)",
-                "uriFormat": "http://localhost:%s/signup.php"
-            }
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080/UBIT/UBIT/signup.php",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
