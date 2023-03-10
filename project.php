@@ -34,6 +34,10 @@ include("navbar.php");
 
 <body>
   <?php
+  require_once 'PHPMailer-master/src/PHPMailer.php';
+  require_once 'PHPMailer-master/src/SMTP.php';
+  require_once 'PHPMailer-master/src/Exception.php';
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $operational = $_POST["operational"];
     $industry = $_POST["industry"];
@@ -44,35 +48,16 @@ include("navbar.php");
 
     $userid = $_SESSION["id"];
 
-    if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-    }
-
     $sql = "INSERT INTO business (operational, industry, bname, bsize, userid) 
-            VALUES ('$operational','$industry','$bname','$bsize','$userid')";
+          VALUES ('$operational','$industry','$bname','$bsize','$userid')";
 
     $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-      // Send email notification
-      $to = "alikhaledm399@gmail.com";
-      $subject = "New Business Submission";
-      $message = "A new business has been submitted.\n\n"
-        . "is it Operational?: $operational\n"
-        . "Industry: $industry\n"
-        . "Business Name: $bname\n"
-        . "Organizational Size: $bsize\n"
-        . "Problem Areas: $userid\n";
-      $headers = "From: Your Website <noreply@example.com>\r\n";
-      $headers .= "Reply-To: noreply@example.com\r\n";
-      $headers .= "X-Mailer: PHP/" . phpversion();
-
-      mail($to, $subject, $message, $headers);
-
-      mysqli_close($conn);
-    }
+    mysqli_close($conn);
   }
   ?>
+
+
 
   <style>
     #my-container {
@@ -90,42 +75,38 @@ include("navbar.php");
     </script>
 
     <div class="row justify-content-center">
-      <div class="col-md-4">
-        <form action="signup.php" method="POST">
+      <div class="col-md-5">
+        <form action="project.php" method="POST">
 
           <b>Enter Your Business E-Mail</b>
-          <input class="form-control" required type="text"></input><br>
+          <input class="form-control" required type="text" name="email"></input><br>
 
           <b>Are you currently running a business or planning to start one?</b>
           <br>
-          <input type="radio" id="planning" name="business" value="planning">
-          <input type="radio" id="running" name="operational" value="running">
+          <input type="radio" id="planning" name="operational" value="planning">
           <label for="running">Yes, I'm currently running a business.</label>
           <br>
 
           <input type="radio" id="planning" name="operational" value="planning">
           <label for="planning">No, but I'm planning to start one.</label><br>
-
-          <input type="radio" id="running" name="business" value="running">
-          <label for="running">Yes, I'm currently running a business.</label>
-          <br><br>
+          <br>
 
           <b>What's Your Business Industry?</b>
           <input class="form-control" required type="text" name="industry"></input><br>
           <b>What's Your Business Name?</b>
           <input class="form-control" type="text" name="bname"></input><br>
           <b>What's Your Organizational Size?</b>
-          <select class="form-control" required>
+          <select class="form-control" name="bsize" required>
             <option value="">Select an option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="1">Just Me</option>
+            <option value="2">2-5</option>
+            <option value="3">6-15</option>
+            <option value="4">16-50</option>
+            <option value="5">50+</option>
           </select><br>
 
           <b>List Some Of The Areas Your Business Needs Help With</b>
-          <input class="form-control" required type="text" name="prob "></input><br>
+          <input class="form-control" required type="text" name="prob"></input><br>
 
           <br>
           <button type="submit" class="btncustom btn-primary">Done</button><br><br><br><br><br>

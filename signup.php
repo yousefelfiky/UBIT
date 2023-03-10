@@ -73,12 +73,12 @@ include("navbar.php");
           <button type="submit" class="btncustom btn-primary">Sign up</button>
         </form>
         <br>
-        <p class="text-center mt-3">Already have an account? <a href="/signin">Sign in</a></p>
+        <p class="text-center mt-3">Already have an account? <a href="signin.php">Sign in</a></p>
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<br><br><br><br><br>
+  <br><br><br><br><br>
   <?php
   include("footer.php");
   ?>
