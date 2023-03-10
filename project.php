@@ -2,7 +2,6 @@
 include("const.php");
 include("connect.php");
 include("navbar.php");
-include("footer.php");
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +19,7 @@ include("footer.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="styles.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -108,3 +108,7 @@ include("footer.php");
 </body>
 
 </html>
+
+<?php
+include("footer.php");
+?>
