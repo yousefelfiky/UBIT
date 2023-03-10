@@ -38,17 +38,15 @@ include("footer.php");
     $bname = $_POST["bname"];
     $bsize = $_POST["bsize"];
 
-    $idsql = "SELECT 'id' FROM user";
-    $result = mysqli_query($conn, $idsql);
-
     if (mysqli_num_rows($result) > 0) {
       $row = mysqli_fetch_assoc($result);
       $userid = $row["id"];
     }
 
-    $sql = "INSERT INTO business (operational, industry, bname, bsize, id) 
-          VALUES ('$operational','$industry','$bname','$bsize','$userid')";
+    $sql = "INSERT INTO business (operational, industry, bname, bsize) 
+          VALUES ('$operational','$industry','$bname','$bsize',)";
 
+    $result = mysqli_query($conn, $sql);
 
     mysqli_close($conn);
   }
@@ -71,15 +69,15 @@ include("footer.php");
 
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form action="/signup" method="POST">
+        <form action="project.php" method="POST">
 
           <b>Are you currently running a business or planning to start one?</b>
           <br>
-          <input type="radio" id="running" name="business" value="running">
+          <input type="radio" id="running" name="operational" value="running">
           <label for="running">Yes, I'm currently running a business.</label>
           <br>
 
-          <input type="radio" id="planning" name="business" value="planning">
+          <input type="radio" id="planning" name="operational" value="planning">
           <label for="planning">No, but I'm planning to start one.</label><br>
           <br>
 
