@@ -2,7 +2,6 @@
 include("const.php");
 include("connect.php");
 include("navbar.php");
-include("footer.php");
 ?>
 
 <!DOCTYPE html>
@@ -80,3 +79,8 @@ include("footer.php");
 </body>
 
 </html>
+
+
+<?php
+include("footer.php");
+?>
