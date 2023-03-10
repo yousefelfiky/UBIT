@@ -1,5 +1,5 @@
  <!-- Footer -->
- <footer class="text-center">
+ <footer id="footer" class="text-center">
      <p>
          <a href="https://www.instagram.com/your_username"><img src="images/facebook.png" alt="Instagram" width="30" height="30"></a>
          <a href="https://www.facebook.com/your_username"><img src="images/instagram.png" alt="Facebook" width="30" height="30"></a>

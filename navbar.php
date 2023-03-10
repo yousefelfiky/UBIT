@@ -20,7 +20,7 @@
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link active text-center" aria-current="page" href="project.php"><button type="button" class="projectbtn btn-outline-secondary">start a project</button></a>
+          <a class="nav-link active text-center" aria-current="page" href="project.php"><button type="button" class="projectbtn btn-outline-secondary">Start a project</button></a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto text-center">
@@ -33,7 +33,7 @@
         <?php
         if (isset($_SESSION['id'])) {
           echo '<li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="logout.php">logout</a>
+          <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>';
         } else {
           echo '<li class="nav-item">

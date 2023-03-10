@@ -371,7 +371,7 @@ include("navbar.php");
   <div class="container mt-5 centertext">
     <div class="row">
       <div class="col-md-12">
-        <a class="text-center" aria-current="page" href="project.html"><button type="button" class="projectbtn btn-outline-secondary">Start A Project</button></a><br><br><br><br>
+        <a class="text-center" aria-current="page" href="project.php"><button type="button" class="projectbtn btn-outline-secondary">Start a project</button></a><br><br><br><br>
 
 
       </div>

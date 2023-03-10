@@ -73,7 +73,7 @@ include("navbar.php");
           <button type="submit" class="btncustom btn-primary">Sign up</button>
         </form>
         <br>
-        <p class="text-center mt-3">Already have an account? <a href="/signin">Sign in</a></p>
+        <p class="text-center mt-3">Already have an account? <a href="signin.php">Sign in</a></p>
       </div>
     </div>
   </div>
