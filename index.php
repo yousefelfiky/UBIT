@@ -29,7 +29,7 @@ include("navbar.php");
   </style>
   <div id="first-container" class="container centertext">
 
-    <div class="row">
+    <div class="row coverimage">
 
       <div class="col-md-6 mt-5">
         <h1 class="starting">Getting started can be<br>the hardest part</h1><br>
@@ -371,7 +371,7 @@ include("navbar.php");
   <div class="container mt-5 centertext">
     <div class="row">
       <div class="col-md-12">
-        <a class="text-center" aria-current="page" href="project.php"><button type="button" class="projectbtn btn-outline-secondary">Start a project</button></a><br><br><br><br>
+        <a class="text-center" aria-current="page" href="project.php"><button type="button" class="btn btn-dark">Start a project</button></a><br><br><br><br>
 
 
       </div>

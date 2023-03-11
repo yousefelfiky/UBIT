@@ -133,9 +133,18 @@ height: 40px;
 }
 
 
+
+.coverhome { 
+  max-width: 100%;
+  background-image: url('images/homebackground.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .coverimage { 
   max-width: 100%;
-  background-image: url('images/aboutimage.jpg');
+  background-image: url('images/homebackground.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

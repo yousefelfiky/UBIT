@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">
       <img src="images/UBITLOGO.png" width="200" height="180" alt="logo" class="d-inline-block align-top">
@@ -19,7 +19,11 @@
       
         
         <li class="nav-item">
-          <a class="nav-link active text-center" aria-current="page" href="project.php"><button type="button" class="projectbtn btn-outline-secondary">Start a project</button></a>
+          <a class="nav-link active text-center" aria-current="page" href="project.php">       
+  
+          <button type="button" class="btn btn-dark">Start a project</button>
+  
+        </a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto text-center">
