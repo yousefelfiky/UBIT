@@ -19,7 +19,7 @@ include("navbar.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-HwGKtJLznb+WhViOox1E5ghvyHtfAB1fXGdEJflP7VThP/yLl/R7Vr1QrZl7VJ62Df1vX/mE/OJvj+JVmsNwWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,38 +34,39 @@ include("navbar.php");
 
 <body>
   <?php
+  require_once 'PHPMailer-master/src/PHPMailer.php';
+  require_once 'PHPMailer-master/src/SMTP.php';
+  require_once 'PHPMailer-master/src/Exception.php';
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $operational = $_POST["operational"];
     $industry = $_POST["industry"];
     $bname = $_POST["bname"];
     $bsize = $_POST["bsize"];
+    $email = $_POST["email"];
+    $prob = $_POST["prob"];
 
-    $idsql = "SELECT 'id' FROM user";
-    $result = mysqli_query($conn, $idsql);
+    $userid = $_SESSION["id"];
 
-    if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_assoc($result);
-      $userid = $row["id"];
-    }
-
-    $sql = "INSERT INTO business (operational, industry, bname, bsize, id) 
+    $sql = "INSERT INTO business (operational, industry, bname, bsize, userid) 
           VALUES ('$operational','$industry','$bname','$bsize','$userid')";
 
+    $result = mysqli_query($conn, $sql);
 
     mysqli_close($conn);
   }
   ?>
 
-<div id="message" class="container text-center" style="display:none;">
-  <b>Thank you for your interest in UBIT! An email will be sent shortly.
-    <br><br>
-   <a href="project.php"><button type="submit" class="btnproject btn-sm btn-primary">Start another project</button></a><br><br>
-   <a href="index.php"><button type="submit" class="btnproject btn-sm btn-primary">Return to Homepage</button></a></b>
-  
-  </b>
-  
- 
-</div>
+  <div id="message" class="container text-center" style="display:none;">
+    <b>Thank you for your interest in UBIT! An email will be sent shortly.
+      <br><br>
+      <a href="project.php"><button type="submit" class="btnproject btn-sm btn-primary">Start another project</button></a><br><br>
+      <a href="index.php"><button type="submit" class="btnproject btn-sm btn-primary">Return to Homepage</button></a></b>
+
+    </b>
+
+
+  </div>
 
 
   <style>
@@ -87,77 +88,82 @@ include("navbar.php");
 
 
     <div class="row justify-content-center">
-      <div id="my-form-container" class="col-md-5">
-        <form id="my-form" action="/signup" method="POST">
+      <div class="col-md-5">
+        <form action="project.php" method="POST">
 
-        <b>Enter Your Business E-Mail</b>
-          <input class="form-control" required type="text"></input><br>
+          <b>Enter Your Business E-Mail</b>
+          <input class="form-control" required type="text" name="email"></input><br>
 
           <b>Are you currently running a business or planning to start one?</b>
           <br>
-          <input type="radio" id="planning" name="business" value="planning">
-          <label for="planning">No, but I'm planning to start one.</label><br>
-
-            <input type="radio" id="running" name="business" value="running">
+          <input type="radio" id="planning" name="operational" value="planning">
           <label for="running">Yes, I'm currently running a business.</label>
-          <br><br>
+          <br>
+
+          <input type="radio" id="planning" name="operational" value="planning">
+          <label for="planning">No, but I'm planning to start one.</label><br>
+          <br>
 
           <b>What's Your Business Industry?</b>
           <input class="form-control" required type="text"></input><br>
           <b>What's Your Business/Company Name?</b>
           <input class="form-control" type="text"></input><br>
           <b>What's Your Organizational Size?</b>
-<select class="form-control" required>
-  <option value="">Select an option</option>
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select><br>
+          <select class="form-control" name="bsize" required>
+            <option value="">Select an option</option>
+            <option value="1">Just Me</option>
+            <option value="2">2-5</option>
+            <option value="3">6-15</option>
+            <option value="4">16-50</option>
+            <option value="5">50+</option>
+          </select><br>
 
           <b>Please provide the URL of your website, or mention if you don't have one.</b>
           <input class="form-control" required type="text"></input><br>
 
 
-<b>List Some Of The Areas Your Business Needs Help With</b>
-<input class="form-control" required type="text"></input><br>
+          <b>List Some Of The Areas Your Business Needs Help With</b>
+          <input class="form-control" required type="text"></input><br>
 
-<br>
+          <br>
 
 
           <button type="submit" class="btncustom btn-primary">Done</button><br><br><br><br><br>
         </form>
-        
-       
+
+
 
 
 
         <script>
-$(document).ready(function() {
-  $('#my-form').submit(function(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
+          $(document).ready(function() {
+            $('#my-form').submit(function(event) {
+              // Prevent the default form submission behavior
+              event.preventDefault();
 
-    // Remove the form container from the DOM
-    $('#my-form-container').remove();
+              // Remove the form container from the DOM
+              $('#my-form-container').remove();
 
-    // Show the thank you message
-    $('#message').show();
+              // Show the thank you message
+              $('#message').show();
 
-    // Add a class to the body element to fix the footer
-    $('body').addClass('fixed-footer');
+              // Add a class to the body element to fix the footer
+              $('body').addClass('fixed-footer');
 
-    // Scroll to the top of the page
-    $('html, body').animate({scrollTop: 0}, 'slow');
-  });
+              // Scroll to the top of the page
+              $('html, body').animate({
+                scrollTop: 0
+              }, 'slow');
+            });
 
-  // Add click event handler to "Done" button
-  $('#done-btn').click(function() {
-    $('html, body').animate({scrollTop: 0}, 'slow');
-  });
-});
-</script>
+            // Add click event handler to "Done" button
+            $('#done-btn').click(function() {
+              $('html, body').animate({
+                scrollTop: 0
+              }, 'slow');
+            });
+          });
+        </script>
 
 
 
