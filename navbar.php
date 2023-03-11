@@ -15,7 +15,6 @@
         <li></li>
         <li></li>
         <li></li>
-<<<<<<< HEAD
       
       
         
@@ -25,8 +24,6 @@
           <button type="button" class="btn btn-dark">Start a project</button>
   
         </a>
-=======
->>>>>>> 44e40a1bdd9313f0ed0555cb0f36bd613213e7f7
         </li>
         </li>
         <?php
